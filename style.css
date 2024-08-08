@@ -1,0 +1,118 @@
+:root {
+    --background-color: white;
+    --text-color: #4a4a4a; /* Lighter dark grey */
+    --border-color: darkgray;
+    --hover-shadow-color: rgba(0, 0, 0, 0.2);
+    --user-info-color: darkgray; /* Color for the user info text */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.dashboard-header {
+    width: 100%;
+    padding: 10px;
+    text-align: right;
+    background-color: var(--background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.user-info {
+    font-size: 1rem; /* Smaller font size */
+    font-weight: 400;
+    color: var(--user-info-color);
+    margin-right: 20px; /* Added margin to the right */
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 60px 20px 20px 20px; /* Add padding at the top to avoid overlapping with the header */
+    background-color: var(--background-color);
+    width: auto;
+    height: auto;
+    justify-items: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: 1px solid var(--border-color); /* Updated border to 1px */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    user-select: none;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.box:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.box:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.box:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+.box:nth-child(4) {
+    animation-delay: 2s;
+}
+
+.box:nth-child(5) {
+    animation-delay: 2.5s;
+}
+
+.box:nth-child(6) {
+    animation-delay: 3s;
+}
+
+.box:hover {
+    transform: scale(1.06); /* Ensure hover effect works */
+    box-shadow: 0 4px 8px var(--hover-shadow-color);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 400; /* Updated font weight */
+    color: var(--text-color);
+}
