@@ -4,6 +4,8 @@
     --border-color: darkgray;
     --hover-shadow-color: rgba(0, 0, 0, 0.2);
     --user-info-color: darkgray; /* Color for the user info text */
+    --hover-background-color: #1a1a1a; /* Very dark grey for hover */
+    --hover-text-color: white; /* White for text and icon on hover */
 }
 
 body {
@@ -53,8 +55,8 @@ body {
 }
 
 .box {
-    width: 150px;
-    height: 150px;
+    width: 160px; /* Adjusted box size */
+    height: 160px; /* Adjusted box size */
     background-color: transparent;
     border: 1px solid var(--border-color); /* Updated border to 1px */
     border-radius: 15px;
@@ -64,10 +66,11 @@ body {
     align-items: center;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s; /* Added background-color and color transition */
     user-select: none;
     opacity: 0;
     animation: fadeIn 1s forwards;
+    position: relative;
 }
 
 .box:nth-child(1) {
@@ -95,8 +98,10 @@ body {
 }
 
 .box:hover {
-    transform: scale(1.06); /* Ensure hover effect works */
+    transform: scale(1.05); /* Ensure hover effect works */
     box-shadow: 0 4px 8px var(--hover-shadow-color);
+    background-color: var(--hover-background-color); /* Background color on hover */
+    color: var(--hover-text-color); /* Text color on hover */
 }
 
 @keyframes fadeIn {
@@ -105,14 +110,66 @@ body {
     }
 }
 
-.icon {
-    font-size: 2rem;
+.icon img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
     margin-bottom: 10px;
-    color: var(--text-color);
+    transition: filter 0.3s; /* Added transition for filter */
+}
+
+.box:hover .icon img {
+    filter: brightness(0) invert(1); /* Change icon color to white on hover */
 }
 
 .title {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Updated font size */
     font-weight: 400; /* Updated font weight */
-    color: var(--text-color);
+    transition: color 0.3s; /* Added transition for color */
+}
+
+.box:hover .title {
+    color: var(--hover-text-color); /* Change text color to white on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .box {
+        width: 140px; /* Adjusted box size for smaller screens */
+        height: 140px; /* Adjusted box size for smaller screens */
+    }
+
+    .icon img {
+        width: 40px; /* Adjust size as needed for smaller screens */
+        height: 40px; /* Adjust size as needed for smaller screens */
+    }
+
+    .title {
+        font-size: 1rem; /* Adjusted font size for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    .box {
+        width: 120px; /* Adjusted box size for smaller screens */
+        height: 120px; /* Adjusted box size for smaller screens */
+    }
+
+    .icon img {
+        width: 30px; /* Adjust size as needed for smaller screens */
+        height: 30px; /* Adjust size as needed for smaller screens */
+    }
+
+    .title {
+        font-size: 0.9rem; /* Adjusted font size for smaller screens */
+    }
 }
